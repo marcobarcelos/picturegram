@@ -28,16 +28,17 @@
   "author": "Marco Barcelos",
   "license": "MIT",
   "dependencies": {
+    "history": "4.6.0",
+    "isomorphic-fetch": "2.2.1",
     "object-assign": "4.1.0",
+    "prop-types": "15.5.10",
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "react-redux": "5.0.5",
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.8",
     "redux": "3.6.0",
-    "redux-thunk": "2.1.0",
-    "prop-types": "15.5.10",
-    "history": "4.6.0"
+    "redux-thunk": "2.1.0"
   },
   "devDependencies": {
     "autoprefixer": "7.1.4",

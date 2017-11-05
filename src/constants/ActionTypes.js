@@ -1,0 +1,3 @@
+export const SHOTS_REQUEST = 'SHOTS_REQUEST';
+export const SHOTS_RECEIVED = 'SHOTS_RECEIVED';
+export const SHOTS_ERROR = 'SHOTS_ERROR';
