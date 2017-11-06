@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/shotsActions';
+import ShotGrid from '../components/ShotGrid';
 
 class HomePage extends React.Component {
   constructor(props, context) {
@@ -19,7 +20,9 @@ class HomePage extends React.Component {
     return (
       <span>
         <button onClick={this.fetchShots}>Fetch</button>
-        <div><pre>{JSON.stringify(this.props.shots, null, 2)}</pre></div>
+        <div>
+          <ShotGrid shots={this.props.shots.items} />
+        </div>
       </span>
     );
   }

@@ -8,7 +8,7 @@
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
     "prestart": "babel-node tools/startMessage.js",
-    "start": "concurrently -r -s first \"npm run test:watch\" \"npm run open:src\" \"npm run lint:watch\"",
+    "start": "concurrently --kill-others-on-fail -r -s first \"npm run test:watch\" \"npm run open:src\" \"npm run lint:watch\"",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
     "lint": "esw webpack.config.* src tools --color",
@@ -30,10 +30,11 @@
   "dependencies": {
     "history": "4.6.0",
     "isomorphic-fetch": "2.2.1",
-    "object-assign": "4.1.0",
+    "normalize.css": "7.0.0",
     "prop-types": "15.5.10",
     "react": "16.0.0",
     "react-dom": "16.0.0",
+    "react-icons": "2.2.7",
     "react-redux": "5.0.5",
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.8",
@@ -208,7 +209,9 @@
             ".js"
           ]
         }
-      ]
+      ],
+      "react/forbid-prop-types": ["off"],
+      "import/prefer-default-export": ["off"]
     },
     "globals": {}
   }

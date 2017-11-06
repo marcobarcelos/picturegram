@@ -26,6 +26,6 @@ export function fetchShots() {
 
     return getAllShots()
       .then(data => dispatch(fetchShotsReceived(data)))
-      .catch(err => dispatch(fetchShotsError()));
+      .catch(() => dispatch(fetchShotsError()));
   };
 }

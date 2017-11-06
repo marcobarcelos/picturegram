@@ -126,7 +126,6 @@ export default {
       },
       {
         test: /(\.css|\.scss|\.sass)$/,
-        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           use: [
             {

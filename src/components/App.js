@@ -1,11 +1,19 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from '../containers/HomePage';
+import Header from './Header';
+import Footer from './Footer';
+
+require('normalize.css');
 
 const App = () => (
-  <Switch>
-    <Route exact path="/" component={HomePage} />
-  </Switch>
+  <div>
+    <Header />
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+    </Switch>
+    <Footer />
+  </div>
 );
 
 export default App;

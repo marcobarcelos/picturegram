@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis|Nunito|Pacifico|Rubik|Source+Sans+Pro|Varela+Round');
+
+/*
+font-family: 'Source Sans Pro', sans-serif;
+font-family: 'Dosis', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Rubik', sans-serif;
+font-family: 'Varela Round', sans-serif;
+ */
+
+body {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 16px;
+}
+
+.header {
+  background: url('../images/background.png') left top / 150px 150px repeat; // TODO: Remove
+  background-color: #1753a9;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  padding: 60px;
+  box-sizing: border-box;
+
+  .title {
+    font-family: 'Pacifico', cursive;
+    color: #fff;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  }
+}
+
+
+
+.footer {
+  position: fixed;
+  padding: 10px 0;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  font-size: 0.75em;
+  font-weight: 100;
+  text-align: center;
+  color: rgba(75, 75, 75, 0.75);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: rgba(225, 225, 225, 0.75);
+
+  .heart {
+    color: #f02126;
+  }
+
+  a {
+    color: #5f5f5f;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
+    border-bottom: 1px dotted transparent;
+
+    &:hover {
+      color: #4b4b4b;
+      border-bottom: 1px dotted #5f5f5f;
+    }
+  }
+}
