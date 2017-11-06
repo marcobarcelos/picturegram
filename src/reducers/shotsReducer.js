@@ -1,9 +1,9 @@
-import { SHOTS_REPLACE, SHOTS_APPEND, SHOTS_REQUEST, SHOTS_ERROR } from '../constants/ActionTypes';
+import * as types from '../constants/ActionTypes';
 import initialState from './initialState';
 
 export default function shotsReducer(state = initialState.shots, action) {
   switch (action.type) {
-    case SHOTS_REPLACE:
+    case types.SHOTS_REPLACE:
       return { // TODO: Verify object spread (browser compatibility)
         ...state,
         items: action.shots,
@@ -14,7 +14,7 @@ export default function shotsReducer(state = initialState.shots, action) {
         }
       };
 
-    case SHOTS_APPEND:
+    case types.SHOTS_APPEND:
       return {
         ...state,
         items: [
@@ -28,11 +28,14 @@ export default function shotsReducer(state = initialState.shots, action) {
         }
       };
 
-    case SHOTS_REQUEST:
+    case types.SHOTS_REQUEST:
       return { ...state, loading: true };
 
-    case SHOTS_ERROR:
+    case types.SHOTS_ERROR:
       return { ...state, loading: false, error: 'An error occurred while fetching shots' };
+
+    case types.GRID_MODE_UPDATE:
+      return { ...state, gridMode: action.gridMode };
 
     default:
       return state;

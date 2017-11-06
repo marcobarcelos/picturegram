@@ -1,0 +1,2 @@
+export const GRID_MODE_LARGE = 'GRID_MODE_LARGE';
+export const GRID_MODE_SMALL = 'GRID_MODE_SMALL';

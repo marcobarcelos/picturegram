@@ -1,5 +1,6 @@
 .header {
-  background: #1753a9 url('../images/background.png') left top / 150px 150px repeat;
+  background: url(../images/background.png) left top/150px 150px repeat, linear-gradient(to bottom, rgba(0,0,0,0.75) 0%,rgba(255,255,255,0) 100%);
+  background-color: #1753a9;
   width: 100%;
   height: 200px;
   text-align: center;

@@ -1,8 +1,11 @@
+import { GRID_MODE_SMALL } from '../constants/GridModes';
+
 export default {
   shots: {
-    items: [],
+    gridMode: GRID_MODE_SMALL,
     loading: false,
     error: null,
+    items: [],
     links: {
       next: ''
     }

@@ -31,6 +31,13 @@ function fetchShotsError() {
   };
 }
 
+export function setGridMode(gridMode) {
+  return {
+    type: types.GRID_MODE_UPDATE,
+    gridMode
+  };
+}
+
 export function fetchInitialShots() {
   return (dispatch) => {
     dispatch(fetchShotsRequest());

@@ -3,9 +3,10 @@
 body {
   font-family: 'Varela Round', sans-serif;
   font-size: 16px;
-  background: #eee;
+  background: rgb(240, 240, 245);
 }
 
 @import 'header';
+@import 'options';
 @import 'footer';
 @import 'shots';

@@ -1,25 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroller';
+import { GRID_MODE_SMALL } from '../constants/GridModes';
 import ShotItem from './ShotItem';
 
-const ShotGrid = ({ shots, loadMore, hasMore }) => (
+const ShotGrid = props => (
   <InfiniteScroll
-    className="shot-grid"
+    className={`shot-grid ${props.gridMode === GRID_MODE_SMALL ? 'small' : 'large'}-grid`}
     pageStart={0}
-    loadMore={loadMore}
-    hasMore={hasMore}
+    initialLoad={false}
+    loadMore={props.loadMore}
+    hasMore={props.hasMore}
     threshold={1000}
-    loader={<div className="loader">Loading ...</div>}
   >
-    {shots.map(shot => <ShotItem key={shot.id} shot={shot} />)}
+    {props.shots.map(shot => <ShotItem key={shot.id} shot={shot} />)}
   </InfiniteScroll>
 );
 
 ShotGrid.propTypes = {
   shots: PropTypes.arrayOf(PropTypes.object).isRequired,
   hasMore: PropTypes.bool.isRequired,
-  loadMore: PropTypes.func.isRequired
+  loadMore: PropTypes.func.isRequired,
+  gridMode: PropTypes.string.isRequired
 };
 
 export default ShotGrid;
