@@ -2,6 +2,9 @@ export default {
   shots: {
     items: [],
     loading: false,
-    error: null
+    error: null,
+    links: {
+      next: ''
+    }
   }
 };

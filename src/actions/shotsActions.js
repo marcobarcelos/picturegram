@@ -1,5 +1,5 @@
 import * as types from '../constants/ActionTypes';
-import { getAllShots } from '../api/shots';
+import { getInitialShots, getNextShots } from '../api/shots';
 
 function fetchShotsRequest() {
   return {
@@ -7,10 +7,21 @@ function fetchShotsRequest() {
   };
 }
 
-function fetchShotsReceived(shots) {
+function fetchShotsAppend({ data, next, prev }) {
   return {
-    type: types.SHOTS_RECEIVED,
-    shots
+    type: types.SHOTS_APPEND,
+    shots: data,
+    next,
+    prev
+  };
+}
+
+function fetchShotsReplace({ data, next, prev }) {
+  return {
+    type: types.SHOTS_REPLACE,
+    shots: data,
+    next,
+    prev
   };
 }
 
@@ -20,12 +31,22 @@ function fetchShotsError() {
   };
 }
 
-export function fetchShots() {
+export function fetchInitialShots() {
   return (dispatch) => {
     dispatch(fetchShotsRequest());
 
-    return getAllShots()
-      .then(data => dispatch(fetchShotsReceived(data)))
+    return getInitialShots()
+      .then(response => dispatch(fetchShotsReplace(response)))
+      .catch((err) => { console.error(err); dispatch(fetchShotsError()); });
+  };
+}
+
+export function fetchNextShots(nextLink) {
+  return (dispatch) => {
+    dispatch(fetchShotsRequest());
+
+    return getNextShots(nextLink)
+      .then(response => dispatch(fetchShotsAppend(response)))
       .catch(() => dispatch(fetchShotsError()));
   };
 }

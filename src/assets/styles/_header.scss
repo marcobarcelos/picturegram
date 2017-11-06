@@ -1,0 +1,16 @@
+.header {
+  background: #1753a9 url('../images/background.png') left top / 150px 150px repeat;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  padding: 60px;
+  box-sizing: border-box;
+
+  .title {
+    font-family: 'Pacifico', cursive;
+    color: #fff;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  }
+}

@@ -35,6 +35,7 @@
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "react-icons": "2.2.7",
+    "react-infinite-scroller": "1.0.15",
     "react-redux": "5.0.5",
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.8",
@@ -210,8 +211,12 @@
           ]
         }
       ],
-      "react/forbid-prop-types": ["off"],
-      "import/prefer-default-export": ["off"]
+      "react/forbid-prop-types": [
+        "off"
+      ],
+      "import/prefer-default-export": [
+        "off"
+      ]
     },
     "globals": {}
   }

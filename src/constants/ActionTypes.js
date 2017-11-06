@@ -1,3 +1,4 @@
 export const SHOTS_REQUEST = 'SHOTS_REQUEST';
-export const SHOTS_RECEIVED = 'SHOTS_RECEIVED';
+export const SHOTS_APPEND = 'SHOTS_APPEND';
+export const SHOTS_REPLACE = 'SHOTS_REPLACE';
 export const SHOTS_ERROR = 'SHOTS_ERROR';

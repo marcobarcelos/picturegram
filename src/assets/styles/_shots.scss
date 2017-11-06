@@ -1,0 +1,91 @@
+$grid-spacing: 15px;
+
+.shot-grid {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: $grid-spacing;
+  box-sizing: border-box;
+
+  .shot-item-container {
+    flex: 33.33%;
+    padding: $grid-spacing;
+    box-sizing: border-box;
+
+    .shot-item {
+      display: block;
+      position: relative;
+      cursor: pointer;
+      min-height: 50px;
+      border-radius: 3px;
+      overflow: hidden;
+      background: #fff;
+      color: #555;
+      font-size: 0.75em;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 12px 10px rgba(0, 0, 0, 0.025);
+
+      transition: all 0.15s ease-in-out;
+
+      .shot-image {
+        position: relative;
+        line-height: 0;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          transition: all 0.15s ease-in-out;
+        }
+
+        .shot-details {
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          line-height: initial;
+          opacity: 0;
+          transition: all 0.25s ease-in-out;
+
+          .stats {
+            padding: 10px;
+            font-size: 1.15em;
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+
+            svg {
+              font-size: 2em;
+            }
+
+            .views {
+              padding-right: 8px;
+            }
+          }
+        }
+      }
+
+      .shot-description {
+        padding: 15px 15px;
+      }
+
+      &:hover {
+        //transform: translate3d(0, -3px, 0);
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 12px 10px rgba(0, 0, 0, 0.05);
+        background: #f3f3f3;
+
+        .shot-image {
+          img {
+            transform: scale(1.15);
+            filter: blur(7px);
+          }
+
+          .shot-details {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

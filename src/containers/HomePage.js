@@ -10,20 +10,31 @@ class HomePage extends React.Component {
     super(props, context);
 
     this.fetchShots = this.fetchShots.bind(this);
+    this.fetchNextShots = this.fetchNextShots.bind(this);
+    this.hasMoreShots = this.hasMoreShots.bind(this);
   }
 
   fetchShots() {
     this.props.actions.fetchShots();
   }
 
+  hasMoreShots() {
+    return !this.props.shots.loading && !!this.props.shots.links.next;
+  }
+
+  fetchNextShots() {
+    this.props.actions.fetchNextShots(this.props.shots.links.next);
+  }
+
   render() {
     return (
-      <span>
-        <button onClick={this.fetchShots}>Fetch</button>
-        <div>
-          <ShotGrid shots={this.props.shots.items} />
-        </div>
-      </span>
+      <div>
+        <ShotGrid
+          shots={this.props.shots.items}
+          hasMore={this.hasMoreShots()}
+          loadMore={this.fetchNextShots}
+        />
+      </div>
     );
   }
 }

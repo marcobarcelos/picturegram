@@ -4,8 +4,6 @@ import HomePage from '../containers/HomePage';
 import Header from './Header';
 import Footer from './Footer';
 
-require('normalize.css');
-
 const App = () => (
   <div>
     <Header />
