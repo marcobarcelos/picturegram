@@ -3,7 +3,19 @@
 body {
   font-family: 'Varela Round', sans-serif;
   font-size: 16px;
-  background: rgb(240, 240, 245);
+  background: #F0F0F5;
+  padding-bottom: 34px;
+}
+
+a {
+  color: #FA1E4B;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    border-bottom: 1px dashed rgba(250, 30, 75, 0.75);
+  }
 }
 
 @import 'header';

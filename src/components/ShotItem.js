@@ -1,44 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TiHeartOutline from 'react-icons/lib/ti/heart-outline';
-import TiEyeOutline from 'react-icons/lib/ti/eye-outline';
+import ShotStats from './ShotStats';
+import ShotImage from './ShotImage';
 
 class ShotItem extends React.Component {
   constructor(props, context) {
     super(props, context);
 
-    this.state = { displayHighResImage: false };
-    console.log(this.props.shot.id, 'constructing', this.state);
-    this.loadedHighResImage = this.loadedHighResImage.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  loadedHighResImage() {
-    console.log(this.props.shot.id, 'loaded high res - changing state', this.state);
-    this.setState({ displayHighResImage: true });
+  handleClick() {
+    this.props.onClick(this.props.shot);
+  }
+
+  handleKeyPress(event) {
+    if (event.key === 'Enter' && this.props.onClick) {
+      this.props.onClick(this.props.shot);
+    }
   }
 
   render() {
-    console.log('Rendering', this.props.shot.id);
     return (
       <div className="shot-item-container">
-        <div className="shot-item">
+        <div className="shot-item" role="link" onClick={this.handleClick} onKeyPress={this.handleKeyPress} tabIndex={0}>
           <div className="shot-image">
-            <img
-              className={`shot-teaser ${!this.state.displayHighResImage && 'visible'}`}
-              alt={this.props.shot.title}
-              src={this.props.shot.images.teaser}
-            />
-            <img
-              className={`shot-preview ${this.state.displayHighResImage && 'visible'}`}
-              alt={this.props.shot.title}
-              src={this.props.shot.images.hidpi || this.props.shot.images.normal}
-              onLoad={this.loadedHighResImage}
-            />
-            <div className="shot-details">
-              <span className="stats">
-                <span className="views"><TiEyeOutline /> {this.props.shot.views_count}</span>
-                <span className="likes"><TiHeartOutline /> {this.props.shot.likes_count}</span>
-              </span>
+            <ShotImage alt={this.props.shot.title} images={this.props.shot.images} />
+            <div className="shot-details-hover">
+              <ShotStats
+                likesCount={this.props.shot.likes_count}
+                viewsCount={this.props.shot.views_count}
+              />
             </div>
           </div>
           <div className="shot-description">{this.props.shot.title}</div>
@@ -49,7 +42,12 @@ class ShotItem extends React.Component {
 }
 
 ShotItem.propTypes = {
-  shot: PropTypes.object.isRequired
+  shot: PropTypes.object.isRequired,
+  onClick: PropTypes.func
+};
+
+ShotItem.defaultProps = {
+  onClick: null
 };
 
 export default ShotItem;

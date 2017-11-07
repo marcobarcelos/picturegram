@@ -1,97 +1,31 @@
-$grid-spacing: 15px;
+$default-spacing: 12px;
+$default-small-spacing: 7px;
 $small-screen: '(max-width: 580px)';
 
 .shot-grid {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
-  padding: $grid-spacing;
+  padding: $default-spacing;
   box-sizing: border-box;
+
+  @media #{$small-screen} {
+    padding: $default-small-spacing;
+  }
 
   .shot-item-container {
     flex: 33.33%;
-    padding: $grid-spacing;
-    box-sizing: border-box;
 
     @media #{$small-screen} {
       flex: 50%;
+      padding: $default-spacing;
     }
 
     .shot-item {
-      display: block;
-      position: relative;
       cursor: pointer;
-      min-height: 50px;
-      border-radius: 3px;
-      overflow: hidden;
-      background: #fff;
-      color: #555;
-      font-size: 0.75em;
-      box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 12px 10px rgba(0, 0, 0, 0.025);
-
-      transition: all 0.15s ease-in-out;
-
-      .shot-image {
-        position: relative;
-        line-height: 0;
-        overflow: hidden;
-        background-color: #dddde3;
-        min-height: 50px;
-
-        img {
-          width: 100%;
-          transition: all 0.15s ease-in-out;
-        }
-
-        .shot-preview {
-          top: 0;
-          left: 0;
-          position: absolute;
-          opacity: 0;
-        }
-
-        .shot-teaser {
-          opacity: 0;
-        }
-
-        .visible {
-          opacity: 1;
-        }
-
-        .shot-details {
-          position: absolute;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(70, 70, 80, 0.5);
-          line-height: initial;
-          opacity: 0;
-          transition: all 0.25s ease-in-out;
-
-          .stats {
-            font-size: 1.15em;
-            color: rgba(255, 255, 255, 0.85);
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
-
-            svg {
-              font-size: 2em;
-            }
-
-            .views {
-              padding-right: 8px;
-            }
-          }
-        }
-      }
 
       .shot-description {
         padding: 15px 15px;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
       }
 
       &:hover {
@@ -104,7 +38,7 @@ $small-screen: '(max-width: 580px)';
             filter: blur(7px);
           }
 
-          .shot-details {
+          .shot-details-hover {
             opacity: 1;
           }
         }
@@ -119,6 +53,152 @@ $small-screen: '(max-width: 580px)';
       @media #{$small-screen} {
         flex: 100%;
       }
+    }
+  }
+}
+
+.shot-item-container {
+  padding: $default-spacing;
+  box-sizing: border-box;
+
+  .shot-item {
+    display: block;
+    position: relative;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fff;
+    color: #555;
+    font-size: 0.75em;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 12px 10px rgba(0, 0, 0, 0.025);
+    transition: all 0.15s ease-in-out;
+
+    .shot-image {
+      position: relative;
+      line-height: 0;
+      overflow: hidden;
+      background-color: #dddde3;
+      min-height: 100px;
+
+      img {
+        color: transparent;
+        width: 100%;
+        transition: all 0.15s ease-in-out;
+      }
+
+      .shot-preview {
+        top: 0;
+        left: 0;
+        position: absolute;
+        opacity: 0;
+      }
+
+      .shot-teaser {
+        opacity: 0;
+      }
+
+      .visible {
+        opacity: 1;
+      }
+
+      .shot-details-hover {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(70, 70, 80, 0.5);
+        line-height: initial;
+        opacity: 0;
+        transition: all 0.25s ease-in-out;
+
+        .shot-stats {
+          color: rgba(255, 255, 255, 0.85);
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+        }
+      }
+    }
+
+    .shot-description {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+    }
+  }
+}
+
+.shot-stats {
+  font-size: 1.15em;
+  color: #64646e;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+
+  svg {
+    font-size: 2em;
+  }
+
+  .views {
+    padding-right: 8px;
+  }
+}
+
+.shot-details {
+  color: rgba(50, 50, 50, 0.75);
+  margin: $default-spacing;
+  text-align: center;
+  padding: 15px 30px;
+
+  @media #{$small-screen} {
+    margin: $default-small-spacing;
+  }
+
+  .shot-preview {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 4px;
+  }
+
+  .shot-title {
+    margin-bottom: 0.5em;
+    text-align: left;
+    color: #3a3a3a;
+  }
+
+  .shot-author {
+    display: block;
+    text-align: left;
+    margin-bottom: 1em;
+  }
+
+  .shot-description {
+    display: block;
+    padding: 5px 0;
+    text-align: left;
+    line-height: 1.5em;
+  }
+
+  .shot-stats {
+    display: block;
+    font-size: 1.3em;
+    margin: 0.5em 0;
+
+    @media #{$small-screen} {
+      font-size: 1.2em;
+    }
+  }
+
+  .shot-card {
+    border: 1px solid rgba(0, 0, 0, 0.075);
+    display: inline-block;
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 180px;
+
+    img {
+      color: transparent;
+      min-height: 80px;
+      border: 0;
+      border-radius: 0;
     }
   }
 }

@@ -1,5 +1,6 @@
-export const SHOTS_REQUEST = 'SHOTS_REQUEST';
-export const SHOTS_APPEND = 'SHOTS_APPEND';
+export const FETCH_REQUEST = 'FETCH_REQUEST';
+export const FETCH_ERROR = 'FETCH_ERROR';
 export const SHOTS_REPLACE = 'SHOTS_REPLACE';
-export const SHOTS_ERROR = 'SHOTS_ERROR';
+export const SHOTS_APPEND = 'SHOTS_APPEND';
+export const SHOT_DETAIL_SELECT = 'SHOT_DETAIL_SELECT';
 export const GRID_MODE_UPDATE = 'GRID_MODE_UPDATE';

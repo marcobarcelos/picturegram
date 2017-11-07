@@ -6,6 +6,7 @@ export default {
     loading: false,
     error: null,
     items: [],
+    selectedItem: null,
     links: {
       next: ''
     }

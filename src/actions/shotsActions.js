@@ -1,13 +1,19 @@
 import * as types from '../constants/ActionTypes';
-import { getInitialShots, getNextShots } from '../api/shots';
+import { getInitialShots, getNextShots, getShotDetails } from '../api/shots';
 
-function fetchShotsRequest() {
+function fetchRequest() {
   return {
-    type: types.SHOTS_REQUEST
+    type: types.FETCH_REQUEST
   };
 }
 
-function fetchShotsAppend({ data, next, prev }) {
+function fetchError() {
+  return {
+    type: types.FETCH_ERROR
+  };
+}
+
+function shotsAppend({ data, next, prev }) {
   return {
     type: types.SHOTS_APPEND,
     shots: data,
@@ -16,18 +22,12 @@ function fetchShotsAppend({ data, next, prev }) {
   };
 }
 
-function fetchShotsReplace({ data, next, prev }) {
+function shotsReplace({ data, next, prev }) {
   return {
     type: types.SHOTS_REPLACE,
     shots: data,
     next,
     prev
-  };
-}
-
-function fetchShotsError() {
-  return {
-    type: types.SHOTS_ERROR
   };
 }
 
@@ -38,22 +38,39 @@ export function setGridMode(gridMode) {
   };
 }
 
+export function setSelectedShot(selectedShot) {
+  return {
+    type: types.SHOT_DETAIL_SELECT,
+    selectedShot
+  };
+}
+
+export function fetchShotDetails(shotId) {
+  return (dispatch) => {
+    dispatch(fetchRequest());
+
+    return getShotDetails(shotId)
+      .then(response => dispatch(setSelectedShot(response)))
+      .catch(() => dispatch(fetchError()));
+  };
+}
+
 export function fetchInitialShots() {
   return (dispatch) => {
-    dispatch(fetchShotsRequest());
+    dispatch(fetchRequest());
 
     return getInitialShots()
-      .then(response => dispatch(fetchShotsReplace(response)))
-      .catch((err) => { console.error(err); dispatch(fetchShotsError()); });
+      .then(response => dispatch(shotsReplace(response)))
+      .catch(() => dispatch(fetchError()));
   };
 }
 
 export function fetchNextShots(nextLink) {
   return (dispatch) => {
-    dispatch(fetchShotsRequest());
+    dispatch(fetchRequest());
 
     return getNextShots(nextLink)
-      .then(response => dispatch(fetchShotsAppend(response)))
-      .catch(() => dispatch(fetchShotsError()));
+      .then(response => dispatch(shotsAppend(response)))
+      .catch(() => dispatch(fetchError()));
   };
 }

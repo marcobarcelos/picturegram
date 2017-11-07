@@ -4,7 +4,7 @@ import initialState from './initialState';
 export default function shotsReducer(state = initialState.shots, action) {
   switch (action.type) {
     case types.SHOTS_REPLACE:
-      return { // TODO: Verify object spread (browser compatibility)
+      return {
         ...state,
         items: action.shots,
         loading: false,
@@ -28,14 +28,19 @@ export default function shotsReducer(state = initialState.shots, action) {
         }
       };
 
+    case types.SHOT_DETAIL_REQUEST:
     case types.SHOTS_REQUEST:
       return { ...state, loading: true };
 
+    case types.SHOT_DETAIL_ERROR:
     case types.SHOTS_ERROR:
       return { ...state, loading: false, error: 'An error occurred while fetching shots' };
 
     case types.GRID_MODE_UPDATE:
       return { ...state, gridMode: action.gridMode };
+
+    case types.SHOT_DETAIL_SELECT:
+      return { ...state, selectedItem: { ...action.selectedShot } };
 
     default:
       return state;

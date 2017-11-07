@@ -7,7 +7,7 @@ function getLinkByRel(links, rel) {
   return link && link.match(/<(.+?)>;/)[1];
 }
 
-function processResponse(response) {
+function processListResponse(response) {
   const links = response.headers.get('link').split(',');
   const [prev, next] = ['prev', 'next'].map(rel => getLinkByRel(links, rel));
 
@@ -16,10 +16,15 @@ function processResponse(response) {
 
 export function getInitialShots() {
   return fetch(`https://api.dribbble.com/v1/shots?access_token=${accessToken}&&per_page=24`)
-    .then(response => processResponse(response));
+    .then(response => processListResponse(response));
 }
 
 export function getNextShots(nextLink) {
   return fetch(nextLink)
-    .then(response => processResponse(response));
+    .then(response => processListResponse(response));
+}
+
+export function getShotDetails(shotId) {
+  return fetch(`https://api.dribbble.com/v1/shots/${shotId}?access_token=${accessToken}`)
+    .then(response => response.json());
 }

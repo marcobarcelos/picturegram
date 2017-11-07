@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
 import { GRID_MODE_SMALL, GRID_MODE_LARGE } from '../constants/GridModes';
 import * as actions from '../actions/shotsActions';
 import ShotGrid from '../components/ShotGrid';
@@ -14,6 +15,7 @@ class HomePage extends React.Component {
     this.fetchShots = this.fetchShots.bind(this);
     this.fetchNextShots = this.fetchNextShots.bind(this);
     this.hasMoreShots = this.hasMoreShots.bind(this);
+    this.displayShotDescription = this.displayShotDescription.bind(this);
     this.toggleGridMode = this.toggleGridMode.bind(this);
   }
 
@@ -27,6 +29,10 @@ class HomePage extends React.Component {
 
   fetchNextShots() {
     this.props.actions.fetchNextShots(this.props.shots.links.next);
+  }
+
+  displayShotDescription(shot) {
+    this.props.history.push(`/shots/${shot.id}`);
   }
 
   toggleGridMode() {
@@ -46,6 +52,7 @@ class HomePage extends React.Component {
           shots={this.props.shots.items}
           hasMore={this.hasMoreShots()}
           loadMore={this.fetchNextShots}
+          onClickItem={this.displayShotDescription}
           gridMode={this.props.shots.gridMode}
         />
       </div>
@@ -55,7 +62,8 @@ class HomePage extends React.Component {
 
 HomePage.propTypes = {
   actions: PropTypes.object.isRequired,
-  shots: PropTypes.object.isRequired
+  shots: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
@@ -70,7 +78,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(HomePage);
+)(HomePage));

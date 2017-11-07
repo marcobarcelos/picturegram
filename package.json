@@ -40,7 +40,8 @@
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.8",
     "redux": "3.6.0",
-    "redux-thunk": "2.1.0"
+    "redux-thunk": "2.1.0",
+    "sanitize-html": "1.15.0"
   },
   "devDependencies": {
     "autoprefixer": "7.1.4",
