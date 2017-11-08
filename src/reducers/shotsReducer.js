@@ -28,19 +28,22 @@ export default function shotsReducer(state = initialState.shots, action) {
         }
       };
 
-    case types.SHOT_DETAIL_REQUEST:
-    case types.SHOTS_REQUEST:
+    case types.FETCH_REQUEST:
       return { ...state, loading: true };
 
-    case types.SHOT_DETAIL_ERROR:
-    case types.SHOTS_ERROR:
+    case types.FETCH_ERROR:
       return { ...state, loading: false, error: 'An error occurred while fetching shots' };
 
     case types.GRID_MODE_UPDATE:
       return { ...state, gridMode: action.gridMode };
 
     case types.SHOT_DETAIL_SELECT:
-      return { ...state, selectedItem: { ...action.selectedShot } };
+      return {
+        ...state,
+        selectedItem: { ...action.selectedShot },
+        loading: false,
+        error: null
+      };
 
     default:
       return state;

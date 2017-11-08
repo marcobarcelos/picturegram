@@ -1,16 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader'; // eslint-disable-line import/no-extraneous-dependencies // TODO: Verify
+import { AppContainer } from 'react-hot-loader'; // eslint-disable-line import/no-extraneous-dependencies
 import { history, configureStore } from './store/configureStore';
-import { fetchInitialShots } from './actions/shotsActions';
 import Root from './components/Root';
 import './assets/styles/styles.scss';
 
-require('./favicon.ico'); // Tell webpack to load favicon.ico
+require('./favicon.ico');
 require('normalize.css');
 
 const store = configureStore();
-store.dispatch(fetchInitialShots());
 
 render(
   <AppContainer>

@@ -14,22 +14,27 @@ class HomePage extends React.Component {
     super(props, context);
 
     this.fetchShots = this.fetchShots.bind(this);
-    this.fetchNextShots = this.fetchNextShots.bind(this);
     this.hasMoreShots = this.hasMoreShots.bind(this);
     this.displayShotDescription = this.displayShotDescription.bind(this);
     this.toggleGridMode = this.toggleGridMode.bind(this);
   }
 
-  fetchShots() {
-    this.props.actions.fetchShots();
-  }
-
-  hasMoreShots() {
-    return !this.props.shots.loading && !!this.props.shots.links.next;
+  fetchInitialShots() {
+    this.props.actions.fetchInitialShots();
   }
 
   fetchNextShots() {
     this.props.actions.fetchNextShots(this.props.shots.links.next);
+  }
+
+  fetchShots() {
+    return !this.props.shots.items.length ? this.fetchInitialShots() : this.fetchNextShots();
+  }
+
+  hasMoreShots() {
+    return !this.props.shots.loading && (
+      !this.props.shots.items.length ||
+      !!this.props.shots.links.next);
   }
 
   displayShotDescription(shot) {
@@ -45,7 +50,7 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <Sticky enabled={true}>
+        <Sticky enabled>
           <OptionBar
             gridMode={this.props.shots.gridMode}
             toggleGridMode={this.toggleGridMode}
@@ -54,7 +59,7 @@ class HomePage extends React.Component {
         <ShotGrid
           shots={this.props.shots.items}
           hasMore={this.hasMoreShots()}
-          loadMore={this.fetchNextShots}
+          loadMore={this.fetchShots}
           onClickItem={this.displayShotDescription}
           gridMode={this.props.shots.gridMode}
         />

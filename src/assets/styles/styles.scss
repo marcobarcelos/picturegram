@@ -18,6 +18,11 @@ a {
   }
 }
 
+.loading {
+  display: block;
+  margin: 0 auto;
+}
+
 @import 'variables';
 @import 'header';
 @import 'options';

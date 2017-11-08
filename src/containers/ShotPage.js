@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/shotsActions';
 import ShotDetails from '../components/ShotDetails';
+import Loading from '../components/Loading';
 
 class ShotPage extends React.Component {
   constructor(props, context) {
@@ -33,9 +34,11 @@ class ShotPage extends React.Component {
   }
 
   render() {
-    const shotDetails = this.props.shots.selectedItem;
+    const { selectedItem: shotDetails, loading } = this.props.shots;
+
     return (
       <div className="shot-item-container">
+        {loading && <Loading />}
         {shotDetails && <ShotDetails shot={shotDetails} />}
       </div>
     );

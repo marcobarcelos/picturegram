@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroller';
 import { GRID_MODE_SMALL } from '../constants/GridModes';
 import ShotItem from './ShotItem';
+import Loading from './Loading';
 
 const ShotGrid = props => (
   <InfiniteScroll
     className={`shot-grid ${props.gridMode === GRID_MODE_SMALL ? 'small' : 'large'}-grid`}
-    pageStart={0}
-    initialLoad={false}
     loadMore={props.loadMore}
     hasMore={props.hasMore}
+    loader={<Loading />}
     threshold={1000}
+    initialLoad
   >
     {props.shots.map(shot => <ShotItem key={shot.id} shot={shot} onClick={props.onClickItem} />)}
   </InfiniteScroll>
