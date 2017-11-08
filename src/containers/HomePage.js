@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Sticky from 'react-stickynode';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
@@ -44,10 +45,12 @@ class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <OptionBar
-          gridMode={this.props.shots.gridMode}
-          toggleGridMode={this.toggleGridMode}
-        />
+        <Sticky enabled={true}>
+          <OptionBar
+            gridMode={this.props.shots.gridMode}
+            toggleGridMode={this.toggleGridMode}
+          />
+        </Sticky>
         <ShotGrid
           shots={this.props.shots.items}
           hasMore={this.hasMoreShots()}

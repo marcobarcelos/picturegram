@@ -1,7 +1,3 @@
-$default-spacing: 12px;
-$default-small-spacing: 7px;
-$small-screen: '(max-width: 580px)';
-
 .shot-grid {
   display: flex;
   width: 100%;
@@ -18,7 +14,7 @@ $small-screen: '(max-width: 580px)';
 
     @media #{$small-screen} {
       flex: 50%;
-      padding: $default-spacing;
+      padding: $default-small-spacing;
     }
 
     .shot-item {
@@ -60,6 +56,7 @@ $small-screen: '(max-width: 580px)';
 .shot-item-container {
   padding: $default-spacing;
   box-sizing: border-box;
+  outline: 0;
 
   .shot-item {
     display: block;
@@ -71,6 +68,7 @@ $small-screen: '(max-width: 580px)';
     font-size: 0.75em;
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 12px 10px rgba(0, 0, 0, 0.025);
     transition: all 0.15s ease-in-out;
+    outline: 0;
 
     .shot-image {
       position: relative;
@@ -150,6 +148,10 @@ $small-screen: '(max-width: 580px)';
 
   @media #{$small-screen} {
     margin: $default-small-spacing;
+  }
+
+  @media #{$medium-screen} {
+    margin: $default-spacing 15%;
   }
 
   .shot-preview {
