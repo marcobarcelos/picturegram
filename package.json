@@ -29,7 +29,6 @@
   "license": "MIT",
   "dependencies": {
     "history": "4.6.0",
-    "isomorphic-fetch": "2.2.1",
     "normalize.css": "7.0.0",
     "prop-types": "15.5.10",
     "react": "16.0.0",
@@ -74,6 +73,7 @@
     "eslint-plugin-react": "7.4.0",
     "eslint-watch": "3.1.2",
     "extract-text-webpack-plugin": "3.0.1",
+    "fetch-mock": "5.13.1",
     "file-loader": "0.11.2",
     "html-webpack-plugin": "2.29.0",
     "identity-obj-proxy": "3.0.0",
@@ -89,6 +89,7 @@
     "react-hot-loader": "3.0.0-beta.6",
     "react-test-renderer": "16.0.0",
     "redux-immutable-state-invariant": "2.0.0",
+    "redux-mock-store": "1.3.0",
     "replace": "0.3.0",
     "rimraf": "2.6.1",
     "sass-loader": "6.0.6",
@@ -218,6 +219,9 @@
         "off"
       ],
       "import/prefer-default-export": [
+        "off"
+      ],
+      "import/no-named-as-default": [
         "off"
       ]
     },

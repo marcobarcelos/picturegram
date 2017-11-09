@@ -14,7 +14,7 @@ const ShotGrid = props => (
     threshold={1000}
     initialLoad
   >
-    {props.shots.map(shot => <ShotItem key={shot.id} shot={shot} onClick={props.onClickItem} />)}
+    {props.shots.map(shot => <ShotItem key={shot.id} shot={shot} onSelect={props.onSelectItem} />)}
   </InfiniteScroll>
 );
 
@@ -23,11 +23,11 @@ ShotGrid.propTypes = {
   hasMore: PropTypes.bool.isRequired,
   loadMore: PropTypes.func.isRequired,
   gridMode: PropTypes.string.isRequired,
-  onClickItem: PropTypes.func
+  onSelectItem: PropTypes.func
 };
 
 ShotGrid.defaultProps = {
-  onClickItem: null
+  onSelectItem: null
 };
 
 export default ShotGrid;

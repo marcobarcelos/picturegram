@@ -4,7 +4,7 @@ $transition-time: 0.25s;
   display: flex;
   align-items: center;
   padding: 12px;
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.01));
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.05));
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
@@ -14,39 +14,15 @@ $transition-time: 0.25s;
 
   .app-title {
     margin: 0 10px;
-    width: 0;
+    width: 100%;
     font-family: 'Pacifico', cursive;
     font-size: 1.1em;
     color: rgb(31, 73, 136);
+    text-align: center;
     text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
     opacity: 0;
     transform: scale(0);
     transition: all 0.25s ease-in-out, opacity 0.01s;
-
-    @media #{$small-screen} {
-      font-size: 0.85em;
-      margin: 0 2px;
-    }
-  }
-
-  .search-bar {
-    width: 100%;
-    margin: 0 10px;
-    padding: 6px 14px;
-    background: #fff;
-    border-radius: 7px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0px -1px 0px rgba(80, 80, 80, 0.075);
-    font-family: 'Varela Round', sans-serif;
-    font-size: 0.95em;
-    color: rgba(52, 45, 76, 0.82);
-    outline: 0;
-    border-bottom: 1px solid rgba(175, 175, 175, 0.075);
-    transition: all $transition-time ease-in-out;
-
-    &::placeholder {
-      color: #ccc;
-    }
   }
 
   .grid-button {
@@ -73,7 +49,6 @@ $transition-time: 0.25s;
 .sticky-outer-wrapper {
   &.active {
     .app-title {
-      width: auto;
       display: block;
       transform: scale(1);
       opacity: 1;
@@ -90,4 +65,8 @@ $transition-time: 0.25s;
       }
     }
   }
+}
+
+.option-flex-placeholder {
+  width: 42px;
 }

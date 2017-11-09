@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Store should handle actions 1`] = `
+Object {
+  "error": "An error occurred while fetching shots",
+  "gridMode": "GRID_MODE_SMALL",
+  "items": Array [
+    Object {
+      "id": 4,
+    },
+    Object {
+      "id": 5,
+    },
+    Object {
+      "id": 6,
+    },
+    Object {
+      "id": 7,
+    },
+    Object {
+      "id": 8,
+    },
+  ],
+  "links": Object {
+    "next": undefined,
+  },
+  "loading": false,
+  "selectedItem": Object {
+    "id": 2,
+  },
+}
+`;

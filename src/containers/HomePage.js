@@ -9,7 +9,7 @@ import * as actions from '../actions/shotsActions';
 import ShotGrid from '../components/ShotGrid';
 import OptionBar from '../components/OptionBar';
 
-class HomePage extends React.Component {
+export class HomePage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -60,7 +60,7 @@ class HomePage extends React.Component {
           shots={this.props.shots.items}
           hasMore={this.hasMoreShots()}
           loadMore={this.fetchShots}
-          onClickItem={this.displayShotDescription}
+          onSelectItem={this.displayShotDescription}
           gridMode={this.props.shots.gridMode}
         />
       </div>

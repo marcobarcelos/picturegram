@@ -6,7 +6,7 @@ import * as actions from '../actions/shotsActions';
 import ShotDetails from '../components/ShotDetails';
 import Loading from '../components/Loading';
 
-class ShotPage extends React.Component {
+export class ShotPage extends React.Component {
   constructor(props, context) {
     super(props, context);
 

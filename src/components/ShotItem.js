@@ -12,12 +12,12 @@ class ShotItem extends React.Component {
   }
 
   handleClick() {
-    this.props.onClick(this.props.shot);
+    this.props.onSelect(this.props.shot);
   }
 
   handleKeyPress(event) {
-    if (event.key === 'Enter' && this.props.onClick) {
-      this.props.onClick(this.props.shot);
+    if (event.key === 'Enter' && this.props.onSelect) {
+      this.props.onSelect(this.props.shot);
     }
   }
 
@@ -43,11 +43,11 @@ class ShotItem extends React.Component {
 
 ShotItem.propTypes = {
   shot: PropTypes.object.isRequired,
-  onClick: PropTypes.func
+  onSelect: PropTypes.func
 };
 
 ShotItem.defaultProps = {
-  onClick: null
+  onSelect: null
 };
 
 export default ShotItem;
