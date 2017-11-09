@@ -8,7 +8,7 @@
 > A simple yet elegant dribbble shots explorer based on React + Redux 📷⚡️
 
 [![Build Status](https://travis-ci.org/marcobarcelos/picturegram.svg?branch=master)](https://travis-ci.org/marcobarcelos/picturegram)
-[![license](https://img.shields.io/github/license/marcobarcelos/picturegram.svg)]()
+[![MIT License](https://img.shields.io/github/license/marcobarcelos/picturegram.svg)]()
 
 # Demo
 
@@ -25,6 +25,14 @@ $ git clone https://github.com/marcobarcelos/picturegram.git
 $ cd ./picturegram
 $ npm install
 ```
+
+### Configuration
+
+Set the Dribbble API settings in ./src/config/config.[dev|prod].js:
+
+```
+export const DRIBBBLE_API_ACCESS_TOKEN = 'api_access_token_here';
+``` 
 
 ### Run
 
@@ -49,6 +57,7 @@ $ npm run build
 - [ ] Add dribbble API OAuth authentication
 - [ ] Add react styled components
 - [ ] Add flow
+- [ ] Add async/await
 
 
 # License
