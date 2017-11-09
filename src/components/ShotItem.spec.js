@@ -6,7 +6,12 @@ import ShotStats from './ShotStats';
 
 describe('<ShotItem />', () => {
   const getProps = () => ({
-    shot: { title: 'Shot title' },
+    shot: {
+      title: 'Shot title',
+      images: {},
+      likes_count: 0,
+      views_count: 0
+    },
     onSelect: jest.fn()
   });
 

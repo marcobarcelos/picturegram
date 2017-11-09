@@ -4,6 +4,7 @@ import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 
@@ -37,7 +38,6 @@ export default {
     // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     new HtmlWebpackPlugin({
       template: 'src/index.ejs',
-      favicon: 'src/favicon.ico',
       minify: {
         removeComments: true,
         collapseWhitespace: true,
@@ -54,7 +54,11 @@ export default {
     }),
 
     // Minify JS
-    new webpack.optimize.UglifyJsPlugin({ sourceMap: true })
+    new webpack.optimize.UglifyJsPlugin({ sourceMap: false }),
+
+    new CopyWebpackPlugin([{
+      from: 'src/assets/icons'
+    }])
   ],
   module: {
     rules: [
@@ -132,7 +136,7 @@ export default {
               loader: 'css-loader',
               options: {
                 minimize: true,
-                sourceMap: true
+                sourceMap: false
               }
             }, {
               loader: 'postcss-loader',
@@ -140,13 +144,13 @@ export default {
                 plugins: () => [
                   autoprefixer
                 ],
-                sourceMap: true
+                sourceMap: false
               }
             }, {
               loader: 'sass-loader',
               options: {
                 includePaths: [path.resolve(__dirname, 'src', 'scss')],
-                sourceMap: true
+                sourceMap: false
               }
             }
           ]

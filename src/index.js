@@ -5,7 +5,6 @@ import { history, configureStore } from './store/configureStore';
 import Root from './components/Root';
 import './assets/styles/styles.scss';
 
-require('./favicon.ico');
 require('normalize.css');
 
 const store = configureStore();
