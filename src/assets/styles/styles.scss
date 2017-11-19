@@ -23,6 +23,25 @@ a {
   margin: 0 auto;
 }
 
+.error-alert-container {
+  text-align: center;
+
+  .error-alert {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(185, 2, 2, 0.5);
+    background-color: rgba(255, 55, 55, 0.25);
+    color: rgb(195, 0, 0);
+    font-size: 0.85em;
+  }
+
+  .error-icon {
+    margin-right: 0.2em;
+    font-size: 1.75em;
+  }
+}
+
 @import 'variables';
 @import 'header';
 @import 'options';

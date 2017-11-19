@@ -2,7 +2,7 @@
 
 exports[`Store should handle actions 1`] = `
 Object {
-  "error": "An error occurred while fetching shots",
+  "error": "An error occurred while fetching shots data",
   "gridMode": "GRID_MODE_SMALL",
   "items": Array [
     Object {

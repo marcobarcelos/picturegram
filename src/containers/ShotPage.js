@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions/shotsActions';
 import ShotDetails from '../components/ShotDetails';
 import Loading from '../components/Loading';
+import ErrorAlert from '../components/ErrorAlert';
 
 export class ShotPage extends React.Component {
   constructor(props, context) {
@@ -34,12 +35,13 @@ export class ShotPage extends React.Component {
   }
 
   render() {
-    const { selectedItem: shotDetails, loading } = this.props.shots;
+    const { selectedItem: shotDetails, loading, error } = this.props.shots;
 
     return (
       <div className="shot-item-container">
         {loading && <Loading />}
         {shotDetails && <ShotDetails shot={shotDetails} />}
+        {error && <ErrorAlert message={error} />}
       </div>
     );
   }

@@ -8,6 +8,7 @@ import { GRID_MODE_SMALL, GRID_MODE_LARGE } from '../constants/GridModes';
 import * as actions from '../actions/shotsActions';
 import ShotGrid from '../components/ShotGrid';
 import OptionBar from '../components/OptionBar';
+import ErrorAlert from '../components/ErrorAlert';
 
 export class HomePage extends React.Component {
   constructor(props, context) {
@@ -32,9 +33,8 @@ export class HomePage extends React.Component {
   }
 
   hasMoreShots() {
-    return !this.props.shots.loading && (
-      !this.props.shots.items.length ||
-      !!this.props.shots.links.next);
+    const { shots } = this.props;
+    return !shots.error && !shots.loading && (!shots.items.length || shots.links.next);
   }
 
   displayShotDescription(shot) {
@@ -48,6 +48,7 @@ export class HomePage extends React.Component {
   }
 
   render() {
+    const { error } = this.props.shots;
     return (
       <div>
         <Sticky enabled>
@@ -63,6 +64,7 @@ export class HomePage extends React.Component {
           onSelectItem={this.displayShotDescription}
           gridMode={this.props.shots.gridMode}
         />
+        {error && <ErrorAlert message={error} />}
       </div>
     );
   }

@@ -41,7 +41,7 @@ describe('Reducers::shotsReducer', () => {
 
   it('should handle FETCH_ERROR', () => {
     const action = { type: types.FETCH_ERROR };
-    const expected = { ...getAppState(), loading: false, error: 'An error occurred while fetching shots' };
+    const expected = { ...getAppState(), loading: false, error: 'An error occurred while fetching shots data' };
 
     expect(reducer(getAppState(), action)).toEqual(expected);
   });

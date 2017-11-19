@@ -32,7 +32,7 @@ export default function shotsReducer(state = initialState.shots, action) {
       return { ...state, loading: true };
 
     case types.FETCH_ERROR:
-      return { ...state, loading: false, error: 'An error occurred while fetching shots' };
+      return { ...state, loading: false, error: 'An error occurred while fetching shots data' };
 
     case types.GRID_MODE_UPDATE:
       return { ...state, gridMode: action.gridMode };
