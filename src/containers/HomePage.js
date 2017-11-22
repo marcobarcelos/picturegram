@@ -34,7 +34,7 @@ export class HomePage extends React.Component {
 
   hasMoreShots() {
     const { shots } = this.props;
-    return !shots.error && !shots.loading && (!shots.items.length || shots.links.next);
+    return !shots.error && !shots.loading && (!shots.items.length || !!shots.links.next);
   }
 
   displayShotDescription(shot) {

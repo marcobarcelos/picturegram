@@ -35,7 +35,7 @@ describe('<ShotGrid />', () => {
       gridMode={props.gridMode}
       onSelectedItem={props.onSelectedItem}
     />);
-    expect(wrapper.find(InfiniteScroll).prop('className').includes('small-grid')).toBe(true);
+    expect(wrapper.find('.shot-grid').prop('className').includes('small-grid')).toBe(true);
   });
 
   it('should apply large-grid css class when large grid option selected', () => {
@@ -48,7 +48,7 @@ describe('<ShotGrid />', () => {
       gridMode={props.gridMode}
       onSelectedItem={props.onSelectedItem}
     />);
-    expect(wrapper.find(InfiniteScroll).prop('className').includes('large-grid')).toBe(true);
+    expect(wrapper.find('.shot-grid').prop('className').includes('large-grid')).toBe(true);
   });
 
   it('should render shot items', () => {

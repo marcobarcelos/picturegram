@@ -54,7 +54,7 @@ export default {
     }),
 
     // Minify JS
-    new webpack.optimize.UglifyJsPlugin({ sourceMap: false }),
+    new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
 
     new CopyWebpackPlugin([{
       from: 'src/assets/icons'
@@ -136,7 +136,7 @@ export default {
               loader: 'css-loader',
               options: {
                 minimize: true,
-                sourceMap: false
+                sourceMap: true
               }
             }, {
               loader: 'postcss-loader',
@@ -144,13 +144,13 @@ export default {
                 plugins: () => [
                   autoprefixer
                 ],
-                sourceMap: false
+                sourceMap: true
               }
             }, {
               loader: 'sass-loader',
               options: {
                 includePaths: [path.resolve(__dirname, 'src', 'scss')],
-                sourceMap: false
+                sourceMap: true
               }
             }
           ]

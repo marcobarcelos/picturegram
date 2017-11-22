@@ -7,14 +7,16 @@ import Loading from './Loading';
 
 const ShotGrid = props => (
   <InfiniteScroll
-    className={`shot-grid ${props.gridMode === GRID_MODE_SMALL ? 'small' : 'large'}-grid`}
     loadMore={props.loadMore}
     hasMore={props.hasMore}
     loader={<Loading />}
     threshold={1000}
     initialLoad
   >
-    {props.shots.map(shot => <ShotItem key={shot.id} shot={shot} onSelect={props.onSelectItem} />)}
+    <div className={`shot-grid ${props.gridMode === GRID_MODE_SMALL ? 'small' : 'large'}-grid`}>
+      {props.shots.map(shot =>
+        <ShotItem key={shot.id} shot={shot} onSelect={props.onSelectItem} />)}
+    </div>
   </InfiniteScroll>
 );
 
